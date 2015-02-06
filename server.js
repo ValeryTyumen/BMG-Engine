@@ -57,13 +57,13 @@ var state = '{}';
 
 
 function broadcastState() {
-	connections.keys().forEach(function(id) {
+	Object.keys(connections).forEach(function(id) {
 		state['clientId'] = id;
 		connections[id].sendUTF(state);
 	});
 	state = '{}';
 	if (connections.length != 0)
-		SetTimeout('broadcastState()', interval);
+		setTimeout(broadcastState, interval);
 }
 
 
@@ -75,12 +75,11 @@ wsServer.on('request', function(request) {
 	if (connections.length == 1)
 		broadcastState();
 
-	//conn.sendUTF(id.toString());
-	
 	console.log((new Date()) + ' Connection accepted.');
 
 	conn.on('message', function(message) {
 		var data = message.utf8Data;
+		//console.log('Got message: ' + data);
 		try {
 			var playerState = JSON.parse(data);
 			var stateObject = JSON.parse(state);
