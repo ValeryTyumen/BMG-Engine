@@ -8,7 +8,7 @@ onmessage = function(event) {
 		if (wsAddress.substr(wsAddress.length - 6, 5) == ':8080') {
 			wsAddress = wsAddress.substr(0, wsAddress.length - 2) + '1';
 		} else {
-			wsAddress = wsAddress.substr(0, wsAddress.length - 5) + ':8081';
+			wsAddress = wsAddress + ':8081';
 		}
 		webSocket = new WebSocket(wsAddress, 'echo-protocol');
 
