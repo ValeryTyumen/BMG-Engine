@@ -36,7 +36,7 @@ var server = http.createServer(function(request, response) {
 	});
 })
 
-server.listen(process.env.PORT || 5000, function() {
+server.listen(process.env.PORT || 8080, function() {
 	console.log((new Date()) + ' Server listening');
 })
 
