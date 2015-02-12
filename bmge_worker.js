@@ -5,11 +5,11 @@ onmessage = function(event) {
 		onFirstMessage = false;
 		var url = event.data;
 		var wsAddress = url.replace(/^http/, 'ws');
-		if (wsAddress.substr(wsAddress.length - 6, 5) == ':8080') {
+		/*if (wsAddress.substr(wsAddress.length - 6, 5) == ':8080') {
 			wsAddress = wsAddress.substr(0, wsAddress.length - 2) + '1';
 		} else {
 			wsAddress = wsAddress + ':8081';
-		}
+		}*/
 		webSocket = new WebSocket(wsAddress, 'echo-protocol');
 
 		webSocket.onopen = function(event) {

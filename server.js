@@ -41,7 +41,7 @@ server.listen(8080, function() {
 	console.log((new Date()) + ' Server listening on port 8080');
 })
 
-var wss = new WebSocketServer({ port: 8081 });
+var wss = new WebSocketServer({ server: server });
 
 var interval = 50;
 var c = 100;
