@@ -6,20 +6,18 @@
   "scripts": {
     "start": "node server.js"
   },
-  /*"dependencies": {
-    "ws": "~4.9.x"
+  "dependencies": {
+    "ws": "0.7.x"
   },
   "engines": {
     "node": "0.10.x"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/heroku/node-js-getting-started"
+    "url": "https://github.com/ValeryTyumen/BMG-Engine"
   },
   "keywords": [
     "node",
-    "heroku",
-    "express"
-  ],
-  "license": "MIT"*/
+    "heroku"
+  ]
 }

@@ -1,5 +1,4 @@
 var http = require('http');
-var https = require('https');
 var WebSocketServer = require('ws').Server;
 var url = require('url');
 var path = require('path');
