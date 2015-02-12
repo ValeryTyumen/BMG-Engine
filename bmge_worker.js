@@ -4,7 +4,7 @@ onmessage = function(event) {
 	if (onFirstMessage) {
 		onFirstMessage = false;
 		var url = event.data;
-		var wsAddress = url.replace(/^http/, 'ws');
+		var wsAddress = url.replace(/^http/, 'ws') + '/websocket';
 		webSocket = new WebSocket(wsAddress, 'echo-protocol');
 
 		webSocket.onopen = function(event) {
