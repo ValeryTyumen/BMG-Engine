@@ -36,8 +36,8 @@ var server = http.createServer(function(request, response) {
 	});
 })
 
-server.listen(8080, function() {
-	console.log((new Date()) + ' Server listening on port 8080');
+server.listen(process.env.PORT || 5000, function() {
+	console.log((new Date()) + ' Server listening');
 })
 
 var wss = new WebSocketServer({ server: server });
