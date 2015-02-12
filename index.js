@@ -2,55 +2,13 @@
 Physijs.scripts.worker = 'physijs_worker.js';
 Physijs.scripts.ammo = 'ammo.js';
 
-/*window.onload = function() {
-	if (typeof(Worker) == 'undefined') {
-		alert('Sorry, no Web Workers support');
-		return;
-	}
-	var worker = new Worker('bmge_worker.js');
-	worker.postMessage(window.location.origin);
-	worker.onmessage = function(event) {
-		try {
-			state = JSON.parse(event.data);
-			playerId = state['clientId'];
-			delete state['id'];
-			Object.keys(state).forEach(function(id) {
-				if (!(id in players)) {
-					players[id] = createPlayer(state[id]['color']);
-				}
-				if (id == playerId) {
-
-				} else {
-					
-				}
-			});
-		} catch(error) {}
-	};
-}
-*/
-var players = {};
+var deltaTime = (new Date()).getTime();
 var scene;
 var camera;
 var plane;
-var playerId = -1;
-var player = null;
-var velocity;
-var state = {};
 
-
-
-function createPlayer(color) {
-	var geometry = new THREE.BoxGeometry(10, 10, 10);
-	var material = Physijs.createMaterial(new THREE.MeshBasicMaterial({ color: color }), 1, 1);
-	var cube = new Physijs.BoxMesh(geometry, material);
-	scene.add(cube);
-	//cube.position.z = 60;
-	console.log('fuck');
-	return cube;
-}
-
-scene = new Physijs.Scene();
-scene.setGravity(new THREE.Vector3(0, 0, -1));
+scene = new Physijs.Scene;
+scene.setGravity(new THREE.Vector3(0, -50, 0));
 camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 
 var directionalLight = new THREE.DirectionalLight(0xffffff, 1);
@@ -60,37 +18,41 @@ scene.add(directionalLight);
 var ambientLight = new THREE.AmbientLight(0x333333);
 scene.add(ambientLight);
 
-var planeGeometry = new THREE.PlaneBufferGeometry(20, 20);
-var planeMaterial = new THREE.MeshLambertMaterial({ color: 0xffffff });
-plane = new Physijs.Mesh(planeGeometry, planeMaterial, 1, 1, 0);
-plane.position.set(0, 0, 0);
+var planeGeometry = new THREE.PlaneGeometry(100, 100, 0, 0);
+var planeMaterial = Physijs.createMaterial(
+	new THREE.MeshLambertMaterial({ color: 0xff00ff }),
+	.8,
+	0
+);
+plane = new Physijs.HeightfieldMesh(planeGeometry, planeMaterial, 0);
+plane.rotation.x = -Math.PI / 2;
+plane.receiveShadow = true;
 scene.add(plane);
 
 var renderer = new THREE.WebGLRenderer();
-renderer.setSize(window.innerWidth, window.innerHeight);
-document.body.appendChild(renderer.domElement);
+renderer.setSize(window.innerWidth * 3 / 4, window.innerHeight * 3 / 4);
+$('#canvas-container').append(renderer.domElement);
 
-camera.position.z = 100;
+function initGame() {	
+	camera.position.y = 10;
+	camera.position.z = 15;
+	camera.lookAt(new THREE.Vector3(0, 0, 0));
+	var render = function() {
+		requestAnimationFrame(render);
+		scene.simulate();
+		renderer.render(scene, camera);
+	};
+	render();
 
-createPlayer(0xffff00).add(camera);
+	createMultiplayer(scene);
 
-var render = function() {
-	requestAnimationFrame(render);
-	scene.simulate();
-	if (playerId != -1) {
-		player = players[playerId];
-		player.add(camera);
-		camera.position.set(0, 3, -3);
-		camera.target.position.set(0, 1, 0);
-	}
+	scene.addEventListener('update',
+		function() {
+			deltaTime = (new Date()).getTime() - deltaTime;
+			renderGame('optimistic');
+			scene.simulate( undefined, 2 );
+		}
+	);
+}
 
-	renderer.render(scene, camera);
-};
-render();
-
-scene.addEventListener(
-			'update',
-			function() {
-				scene.simulate( undefined, 2 );
-			}
-		);
+$(initGame);

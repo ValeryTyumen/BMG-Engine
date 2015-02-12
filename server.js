@@ -51,27 +51,53 @@ var wsServer = new WebSocketServer({
 
 
 var interval = 50;
+var c = 100;
 var connections = [];
 var iter = 0;
-var state = '{}';
+var state = {};
 
 
 function broadcastState() {
 	Object.keys(connections).forEach(function(id) {
 		state['clientId'] = id;
-		connections[id].sendUTF(state);
+		connections[id].sendUTF(JSON.stringify(state));
 	});
-	state = '{}';
+	console.log((new Date()) +  ' broadcasted state: ' + JSON.stringify(state));
+	state = {};
 	if (connections.length != 0)
 		setTimeout(broadcastState, interval);
 }
 
+function randFloat(low, high) {
+	return (high - low) * Math.random() + low;
+}
+
+function createPlayerState() {
+	var playerState = {};
+	playerState.color = 0xffffff * Math.random();
+	playerState.position = {
+		x: randFloat(-10, 10),
+		y: 5,
+		z: randFloat(-10, 10)
+	};
+	playerState.rotation = {
+		x: 0,
+		y: randFloat(0, 10),
+		z: 0
+	};
+	return playerState;
+}
 
 wsServer.on('request', function(request) {
 	
 	var conn = request.accept('echo-protocol', request.origin);
 	var id = iter++;
 	connections[id] = conn;
+	var newPlayerState = createPlayerState();
+	var newState = {'clientId': id};
+	newState[id] = newPlayerState;
+	console.log((new Date()) + ' Init player: ' + JSON.stringify(newState));
+	conn.sendUTF(JSON.stringify(newState));
 	if (connections.length == 1)
 		broadcastState();
 
@@ -81,10 +107,11 @@ wsServer.on('request', function(request) {
 		var data = message.utf8Data;
 		//console.log('Got message: ' + data);
 		try {
+			//console.log(data);
 			var playerState = JSON.parse(data);
-			var stateObject = JSON.parse(state);
-			stateObject[id] = playerState;
-			state = JSON.stringify(stateObject);
+			//console.log(typeof playerState);
+			state[id] = playerState;
+			//console.log(typeof state[id]);
 		} catch(error) {
 			console.log((new Date()) + ' Parse error from player ' + id + '.');
 		}
@@ -95,5 +122,3 @@ wsServer.on('request', function(request) {
 		delete connections[id];
 	});
 });
-
-
