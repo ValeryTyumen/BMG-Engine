@@ -1,0 +1,148 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'install', '--save', 'ws' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.33
+4 verbose cache add [ 'ws', null ]
+5 verbose cache add name=undefined spec="ws" args=["ws",null]
+6 verbose parsed url { protocol: null,
+6 verbose parsed url   slashes: null,
+6 verbose parsed url   auth: null,
+6 verbose parsed url   host: null,
+6 verbose parsed url   port: null,
+6 verbose parsed url   hostname: null,
+6 verbose parsed url   hash: null,
+6 verbose parsed url   search: null,
+6 verbose parsed url   query: null,
+6 verbose parsed url   pathname: 'ws',
+6 verbose parsed url   path: 'ws',
+6 verbose parsed url   href: 'ws' }
+7 silly lockFile 1457b75d-ws ws
+8 verbose lock ws /Users/valerijlihoserstov/.npm/1457b75d-ws.lock
+9 silly lockFile 1457b75d-ws ws
+10 silly lockFile 1457b75d-ws ws
+11 verbose addNamed [ 'ws', '' ]
+12 verbose addNamed [ null, '*' ]
+13 silly lockFile e88fe629-ws ws@
+14 verbose lock ws@ /Users/valerijlihoserstov/.npm/e88fe629-ws.lock
+15 silly addNameRange { name: 'ws', range: '*', hasData: false }
+16 verbose request where is /ws
+17 verbose request registry https://registry.npmjs.org/
+18 verbose request id ab480dd4ab427d4a
+19 verbose url raw /ws
+20 verbose url resolving [ 'https://registry.npmjs.org/', './ws' ]
+21 verbose url resolved https://registry.npmjs.org/ws
+22 verbose request where is https://registry.npmjs.org/ws
+23 info trying registry request attempt 1 at 22:40:48
+24 verbose etag "B6R4321PW0NGA16LLRY7T54NS"
+25 http GET https://registry.npmjs.org/ws
+26 http 200 https://registry.npmjs.org/ws
+27 silly registry.get cb [ 200,
+27 silly registry.get   { date: 'Thu, 12 Feb 2015 17:40:48 GMT',
+27 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+27 silly registry.get     etag: '"DYWY2J7IMFTCTTG82C763ALFN"',
+27 silly registry.get     'content-type': 'application/json',
+27 silly registry.get     'cache-control': 'max-age=60',
+27 silly registry.get     'content-length': '70603',
+27 silly registry.get     'accept-ranges': 'bytes',
+27 silly registry.get     via: '1.1 varnish',
+27 silly registry.get     age: '24',
+27 silly registry.get     'x-served-by': 'cache-lcy1133-LCY',
+27 silly registry.get     'x-cache': 'HIT',
+27 silly registry.get     'x-cache-hits': '1',
+27 silly registry.get     'x-timer': 'S1423762848.885726,VS0,VE0',
+27 silly registry.get     vary: 'Accept',
+27 silly registry.get     'keep-alive': 'timeout=10, max=50',
+27 silly registry.get     connection: 'Keep-Alive' } ]
+28 silly addNameRange number 2 { name: 'ws', range: '*', hasData: true }
+29 silly addNameRange versions [ 'ws',
+29 silly addNameRange   [ '0.2.6',
+29 silly addNameRange     '0.2.8',
+29 silly addNameRange     '0.2.9',
+29 silly addNameRange     '0.3.0',
+29 silly addNameRange     '0.3.1',
+29 silly addNameRange     '0.3.2',
+29 silly addNameRange     '0.3.3',
+29 silly addNameRange     '0.3.4',
+29 silly addNameRange     '0.3.4-2',
+29 silly addNameRange     '0.3.5',
+29 silly addNameRange     '0.3.5-2',
+29 silly addNameRange     '0.3.5-3',
+29 silly addNameRange     '0.3.5-4',
+29 silly addNameRange     '0.3.6',
+29 silly addNameRange     '0.3.7',
+29 silly addNameRange     '0.3.8',
+29 silly addNameRange     '0.3.9',
+29 silly addNameRange     '0.4.0',
+29 silly addNameRange     '0.4.1',
+29 silly addNameRange     '0.4.2',
+29 silly addNameRange     '0.4.3',
+29 silly addNameRange     '0.4.5',
+29 silly addNameRange     '0.4.6',
+29 silly addNameRange     '0.4.7',
+29 silly addNameRange     '0.4.8',
+29 silly addNameRange     '0.4.9',
+29 silly addNameRange     '0.4.10',
+29 silly addNameRange     '0.4.11',
+29 silly addNameRange     '0.4.12',
+29 silly addNameRange     '0.4.13',
+29 silly addNameRange     '0.4.14',
+29 silly addNameRange     '0.4.15',
+29 silly addNameRange     '0.4.16',
+29 silly addNameRange     '0.4.17',
+29 silly addNameRange     '0.4.18',
+29 silly addNameRange     '0.4.19',
+29 silly addNameRange     '0.4.20',
+29 silly addNameRange     '0.4.21',
+29 silly addNameRange     '0.4.22',
+29 silly addNameRange     '0.4.23',
+29 silly addNameRange     '0.4.24',
+29 silly addNameRange     '0.4.25',
+29 silly addNameRange     '0.4.27',
+29 silly addNameRange     '0.4.28',
+29 silly addNameRange     '0.4.29',
+29 silly addNameRange     '0.4.30',
+29 silly addNameRange     '0.4.31',
+29 silly addNameRange     '0.4.32',
+29 silly addNameRange     '0.5.0',
+29 silly addNameRange     '0.6.0',
+29 silly addNameRange     '0.6.1',
+29 silly addNameRange     '0.6.2',
+29 silly addNameRange     '0.6.3',
+29 silly addNameRange     '0.6.4',
+29 silly addNameRange     '0.6.5',
+29 silly addNameRange     '0.7.0',
+29 silly addNameRange     '0.7.1' ] ]
+30 verbose addNamed [ 'ws', '0.7.1' ]
+31 verbose addNamed [ '0.7.1', '0.7.1' ]
+32 silly lockFile 94a65900-ws-0-7-1 ws@0.7.1
+33 verbose lock ws@0.7.1 /Users/valerijlihoserstov/.npm/94a65900-ws-0-7-1.lock
+34 silly lockFile 89989a00-gistry-npmjs-org-ws-ws-0-7-1-tgz https://registry.npmjs.org/ws/-/ws-0.7.1.tgz
+35 verbose lock https://registry.npmjs.org/ws/-/ws-0.7.1.tgz /Users/valerijlihoserstov/.npm/89989a00-gistry-npmjs-org-ws-ws-0-7-1-tgz.lock
+36 verbose addRemoteTarball [ 'https://registry.npmjs.org/ws/-/ws-0.7.1.tgz',
+36 verbose addRemoteTarball   '8f1c7864ca08081be3cd0ac330df0d29c5fcd0da' ]
+37 info retry fetch attempt 1 at 22:40:49
+38 verbose fetch to= /var/folders/8n/ll9_tvg134b_1mqhkqs8l75m0000gn/T/npm-10911-0jYfI2iV/registry.npmjs.org/ws/-/ws-0.7.1.tgz
+39 http GET https://registry.npmjs.org/ws/-/ws-0.7.1.tgz
+40 http 200 https://registry.npmjs.org/ws/-/ws-0.7.1.tgz
+41 silly lockFile 89989a00-gistry-npmjs-org-ws-ws-0-7-1-tgz https://registry.npmjs.org/ws/-/ws-0.7.1.tgz
+42 silly lockFile 89989a00-gistry-npmjs-org-ws-ws-0-7-1-tgz https://registry.npmjs.org/ws/-/ws-0.7.1.tgz
+43 silly lockFile 94a65900-ws-0-7-1 ws@0.7.1
+44 silly lockFile 94a65900-ws-0-7-1 ws@0.7.1
+45 silly lockFile e88fe629-ws ws@
+46 silly lockFile e88fe629-ws ws@
+47 error Error: EACCES, mkdir '/Users/valerijlihoserstov/.npm/ws/0.7.1'
+47 error  { [Error: EACCES, mkdir '/Users/valerijlihoserstov/.npm/ws/0.7.1']
+47 error   errno: 3,
+47 error   code: 'EACCES',
+47 error   path: '/Users/valerijlihoserstov/.npm/ws/0.7.1' }
+48 error Please try running this command again as root/Administrator.
+49 error System Darwin 14.0.0
+50 error command "node" "/usr/local/bin/npm" "install" "--save" "ws"
+51 error cwd /Users/valerijlihoserstov/Documents/BMGE
+52 error node -v v0.10.33
+53 error npm -v 1.4.28
+54 error path /Users/valerijlihoserstov/.npm/ws/0.7.1
+55 error code EACCES
+56 error errno 3
+57 error stack Error: EACCES, mkdir '/Users/valerijlihoserstov/.npm/ws/0.7.1'
+58 verbose exit [ 3, true ]

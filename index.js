@@ -2,7 +2,8 @@
 Physijs.scripts.worker = 'physijs_worker.js';
 Physijs.scripts.ammo = 'ammo.js';
 
-var deltaTime = (new Date()).getTime();
+var time = (new Date()).getTime();
+var deltaTime = 0;
 var scene;
 var camera;
 var plane;
@@ -48,7 +49,9 @@ function initGame() {
 
 	scene.addEventListener('update',
 		function() {
-			deltaTime = (new Date()).getTime() - deltaTime;
+			deltaTime = (new Date()).getTime() - time;
+			time = (new Date()).getTime();
+			//console.log(deltaTime);
 			renderGame('optimistic');
 			scene.simulate( undefined, 2 );
 		}

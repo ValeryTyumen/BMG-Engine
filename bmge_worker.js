@@ -4,7 +4,12 @@ onmessage = function(event) {
 	if (onFirstMessage) {
 		onFirstMessage = false;
 		var url = event.data;
-		var wsAddress = url.replace(/^http/, 'ws') + '/websocket';
+		var wsAddress = url.replace(/^http/, 'ws');
+		if (wsAddress.substr(wsAddress.length - 6, 5) == ':8080') {
+			wsAddress = wsAddress.substr(0, wsAddress.length - 2) + '1';
+		} else {
+			wsAddress = wsAddress.substr(0, wsAddress.length - 5) + ':8081';
+		}
 		webSocket = new WebSocket(wsAddress, 'echo-protocol');
 
 		webSocket.onopen = function(event) {
@@ -16,7 +21,6 @@ onmessage = function(event) {
 
 		webSocket.onclose = function(event) {};
 	} else {
-		//webSocket.send(JSON.stringify(event.data));
 		webSocket.send(event.data);
 	}
 }
