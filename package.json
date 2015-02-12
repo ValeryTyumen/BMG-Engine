@@ -1,13 +1,7 @@
 {
-  "name": "BMGE",
-  "version": "0.0.1",
-  "description": "Browser Multiplayer Game Engine",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
-  },
-  "dependencies": {
-    "ws": "0.7.1"
   },
   "engines": {
     "node": "0.10.x"
