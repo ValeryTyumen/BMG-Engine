@@ -7,17 +7,9 @@
     "start": "node server.js"
   },
   "dependencies": {
-    "ws": "0.7.x"
+    "ws": "0.7.1"
   },
   "engines": {
     "node": "0.10.x"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/ValeryTyumen/BMG-Engine"
-  },
-  "keywords": [
-    "node",
-    "heroku"
-  ]
+  }
 }
