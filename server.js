@@ -41,7 +41,7 @@ server.listen(process.env.PORT || 8080, function() {
 })
 
 var wss = new WebSocketServer({ server: server });
-
+console.log((new Date()) + ' Web Socket created');
 var interval = 50;
 var c = 100;
 var connections = [];

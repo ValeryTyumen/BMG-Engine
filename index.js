@@ -52,7 +52,7 @@ function initGame() {
 			deltaTime = (new Date()).getTime() - time;
 			time = (new Date()).getTime();
 			//console.log(deltaTime);
-			renderGame('optimistic');
+			renderGame('filtering');
 			scene.simulate( undefined, 2 );
 		}
 	);

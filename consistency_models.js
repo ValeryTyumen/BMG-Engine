@@ -7,7 +7,7 @@ function findWorldLineIntersection(cauchySurface, worldLine, t0, t1, n) {
 	for (var i = 0; i < n; i++) {
 		t = (t0 + t1) / 2;
 		var playerState = worldLine(t);
-		var location = new THREE.Vector3(playerState.x, playerState.y, playerState.z);
+		var location = new THREE.Vector3(playerState.position.x, playerState.position.y, playerState.position.z);
 		if (t > cauchySurface(location)) {
 			t1 = t;
 		} else {
@@ -31,9 +31,23 @@ function approximateLinearly(t, playerStates, valueKey) {
 	}
 	var t1 = playerStates[t_bound]['time'];
 	var t2 = playerStates[t_bound + 1]['time'];
-	var v1 = playerStates[t_bound][valueKey];
-	var v2 = playerStates[t_bound + 1][valueKey];
-	return THREE.Math.mapLinear(t, t1, t2, v1, v2);
+	if (valueKey == 'position' || valueKey == 'rotation') {
+		var x1 = playerStates[t_bound][valueKey].x;
+		var y1 = playerStates[t_bound][valueKey].y;
+		var z1 = playerStates[t_bound][valueKey].z;
+		var x2 = playerStates[t_bound + 1][valueKey].x;
+		var y2 = playerStates[t_bound + 1][valueKey].y;
+		var z2 = playerStates[t_bound + 1][valueKey].z;
+		return { 
+			x: THREE.Math.mapLinear(t, t1, t2, x1, x2),
+			y: THREE.Math.mapLinear(t, t1, t2, y1, y2),
+			z: THREE.Math.mapLinear(t, t1, t2, z1, z2)
+		};
+	} else {
+		var v1 = playerStates[t_bound][valueKey];
+		var v2 = playerStates[t_bound + 1][valueKey];
+		return THREE.Math.mapLinear(t, t1, t2, v1, v2);
+	}
 }
 
 
